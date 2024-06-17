@@ -95,10 +95,11 @@ def extractFrames(
         outputFilePath = os.path.join(writeDirectory,file)
         video = returnVideoCapIfVideo(filePath)
         if video != False:
-            mkdir(outputFilePath)
+            
             frameCount = getVideoFrameCount(video)
             fps = getVideoFPS(video)
-            if frameCount > 0:
+            if frameCount > 1:
+                mkdir(outputFilePath)
                 for frameNum in range(framesFromEachVideo):
                     extractFrame(filePath,os.path.join(outputFilePath,f"{frameNum}.png"),random.randint(0,frameCount),fps)
                 
